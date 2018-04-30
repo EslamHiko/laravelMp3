@@ -109,7 +109,7 @@ class LaravelMP3
 
     public function getComment($path){
         $lib = $this->load($path);
-        return $lib['tag']['id3v2']['year'];
+        return $lib['tag']['id3v2']['comment'];
     }
 }
 
