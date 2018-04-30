@@ -74,7 +74,7 @@ class LaravelMP3
     public function getGenre($path)
     {
         $lib = $this->load($path);
-        return isset($lib['tags']['id3v2']['genre']) $lib['tags']['id3v2']['genre'] ? : '';
+        return isset($lib['tags']['id3v2']['genre']) ? $lib['tags']['id3v2']['genre'] : '';
     }
 
     public function getMime($path)
@@ -109,7 +109,7 @@ class LaravelMP3
 
     public function getComment($path){
         $lib = $this->load($path);
-        return isset($lib['tags']['id3v2']['comment']) $lib['tags']['id3v2']['comment'] ? : '';
+        return isset($lib['tags']['id3v2']['comment']) ? $lib['tags']['id3v2']['comment'] : '';
     }
     
     public function getAlbumCover($path){
