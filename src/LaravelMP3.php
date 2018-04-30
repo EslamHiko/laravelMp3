@@ -29,19 +29,19 @@ class LaravelMP3
     public function getAlbum($path)
     {
         $lib = $this->load($path);
-        return $lib['tag']['id3v2']['album'];
+        return isset($lib['tags']['id3v2']['album']) ? $lib['tags']['id3v2']['album'] : '';
     }
 
     public function getArtist($path)
     {
         $lib = $this->load($path);
-        return $lib['tag']['id3v2']['artist'];
+        return isset($lib['tags']['id3v2']['artist']) ? $lib['tags']['id3v2']['artist'] : '';
     }
 
     public function getBitrate($path)
     {
         $lib = $this->load($path);
-        return $lib['audio']['bitrate'];
+        return isset($lib['audio']['bitrate']) ? $lib['audio']['bitrate'] : '';
     }
 
     public function getDuration($path)
@@ -68,49 +68,54 @@ class LaravelMP3
     public function getFormat($path)
     {
         $lib = $this->load($path);
-        return $lib['audio']['dataformat'];
+        return isset($lib['audio']['dataformat']) ? $lib['audio']['dataformat'] : '';
     }
 
     public function getGenre($path)
     {
         $lib = $this->load($path);
-        return $lib['tag']['id3v2']['genre'];
+        return isset($lib['tags']['id3v2']['genre']) $lib['tags']['id3v2']['genre'] ? : '';
     }
 
     public function getMime($path)
     {
         $lib = $this->load($path);
-        return $lib['mime_type'];
+        return isset($lib['mime_type']) ? $lib['mime_type'] : '';
     }
 
     public function getTitle($path)
     {
         $lib = $this->load($path);
-        return $lib['tag']['id3v2']['title'];
+        return isset($lib['tags']['id3v2']['title']) ? $lib['tags']['id3v2']['title'] : '';
     }
 
     public function getTrackNo($path)
     {
         $lib = $this->load($path);
-        return $lib['tag']['id3v2']['track_number'];
+        return isset($lib['tags']['id3v2']['track_number']) ? $lib['tags']['id3v2']['track_number'] : '';
     }
 
     public function getYear($path)
     {
         $lib = $this->load($path);
-        return $lib['tag']['id3v2']['year'];
+        return isset($lib['tags']['id3v2']['year']) ? $lib['tags']['id3v2']['year'] : '';
     }
 
     public function isLossless($path)
     {
         $lib = $this->load($path);
-        return $lib['audio']['lossless'];
+        return isset($lib['audio']['lossless']) ? $lib['audio']['lossless'] : '';
     }
 
     public function getComment($path){
         $lib = $this->load($path);
-        return $lib['tag']['id3v2']['comment'];
+        return isset($lib['tags']['id3v2']['comment']) $lib['tags']['id3v2']['comment'] ? : '';
     }
+    
+    public function getAlbumCover($path){
+        $lib = $this->load($path);
+        return isset($lib['comments']['picture']['0']['data']) ? $lib['comments']['picture']['0']['data'] : false;
+     }
 }
 
 
