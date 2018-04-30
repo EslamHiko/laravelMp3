@@ -111,7 +111,11 @@ class LaravelMP3
         $lib = $this->load($path);
         return $lib['tag']['id3v2']['comment'];
     }
-    
+    // return the album cover as a file if it exists
+    public function getAlbumCover($path){
+        $lib = $this->load($path);
+        return isset($lib['comments']['picture']['0']['data']) ? $lib['comments']['picture']['0']['data'] : false;
+    }
 }
 
 
