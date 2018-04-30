@@ -29,13 +29,13 @@ class LaravelMP3
     public function getAlbum($path)
     {
         $lib = $this->load($path);
-        return $lib['tag']['id3v2']['album'];
+        return $lib['tags']['id3v2']['album'];
     }
 
     public function getArtist($path)
     {
         $lib = $this->load($path);
-        return $lib['tag']['id3v2']['artist'];
+        return $lib['tags']['id3v2']['artist'];
     }
 
     public function getBitrate($path)
@@ -74,7 +74,7 @@ class LaravelMP3
     public function getGenre($path)
     {
         $lib = $this->load($path);
-        return $lib['tag']['id3v2']['genre'];
+        return $lib['tags']['id3v2']['genre'];
     }
 
     public function getMime($path)
@@ -86,19 +86,19 @@ class LaravelMP3
     public function getTitle($path)
     {
         $lib = $this->load($path);
-        return $lib['tag']['id3v2']['title'];
+        return $lib['tags']['id3v2']['title'];
     }
 
     public function getTrackNo($path)
     {
         $lib = $this->load($path);
-        return $lib['tag']['id3v2']['track_number'];
+        return $lib['tags']['id3v2']['track_number'];
     }
 
     public function getYear($path)
     {
         $lib = $this->load($path);
-        return $lib['tag']['id3v2']['year'];
+        return $lib['tags']['id3v2']['year'];
     }
 
     public function isLossless($path)
@@ -106,15 +106,10 @@ class LaravelMP3
         $lib = $this->load($path);
         return $lib['audio']['lossless'];
     }
-    // get the comment
+
     public function getComment($path){
         $lib = $this->load($path);
-        return $lib['tag']['id3v2']['comment'];
-    }
-    // return the album cover as a file if it exists
-    public function getAlbumCover($path){
-        $lib = $this->load($path);
-        return isset($lib['comments']['picture']['0']['data']) ? $lib['comments']['picture']['0']['data'] : false;
+        return $lib['tags']['id3v2']['comment'];
     }
 }
 
