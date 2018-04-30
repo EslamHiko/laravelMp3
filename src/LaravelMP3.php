@@ -107,7 +107,10 @@ class LaravelMP3
         return $lib['audio']['lossless'];
     }
 
-
+    public function getComment($path){
+        $lib = $this->load($path);
+        return $lib['tag']['id3v2']['year'];
+    }
 }
 
 
